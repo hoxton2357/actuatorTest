@@ -1,0 +1,15 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+
+info:
+  app:
+    name: Employee Manager Application
+    description: This is an application to manage employees
+    version: 1.0
