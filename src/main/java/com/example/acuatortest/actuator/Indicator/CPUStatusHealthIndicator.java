@@ -20,7 +20,11 @@ public class CPUStatusHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         double processCpuLoad = osBean.getSystemCpuLoad();
-        return Health.up().withDetail("processCpuLoad", processCpuLoad).build();
+        if (processCpuLoad < 80d) {
+            return Health.up().withDetail("processCpuLoad", processCpuLoad).build();
+        } else {
+            return Health.down().withDetail("processCpuLoad", processCpuLoad).build();
+        }
 
     }
 }
