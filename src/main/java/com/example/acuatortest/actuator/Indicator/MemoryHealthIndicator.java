@@ -28,12 +28,14 @@ public class MemoryHealthIndicator implements HealthIndicator {
                     .withDetail("totalPhysicalMemorySize", totalPhysicalMemorySize)
                     .withDetail("freePhysicalMemorySize",freePhysicalMemorySize)
                     .withDetail("usedPhysicalMemorySize",usedPhysicalMemorySize)
+                    .withDetail("condition", "if memory used ration > 0.8, it will return down")
                     .build();
         }else {
             return Health.down()
                     .withDetail("totalPhysicalMemorySize", totalPhysicalMemorySize)
                     .withDetail("freePhysicalMemorySize",freePhysicalMemorySize)
                     .withDetail("usedPhysicalMemorySize",usedPhysicalMemorySize)
+                    .withDetail("condition", "if memory used ration > 0.8, it will return down")
                     .build();
         }
 

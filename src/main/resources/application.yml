@@ -13,3 +13,6 @@ info:
     name: Employee Manager Application
     description: This is an application to manage employees
     version: 1.0
+
+server:
+  port: 8888

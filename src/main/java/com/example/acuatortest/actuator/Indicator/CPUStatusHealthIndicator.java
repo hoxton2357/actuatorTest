@@ -24,9 +24,18 @@ public class CPUStatusHealthIndicator implements HealthIndicator {
         double systemLoadAverage = osBean.getSystemLoadAverage();
         double processCpuLoad = osBean.getSystemCpuLoad();
         if (processCpuLoad < 0.80d) {
-            return Health.up().withDetail("processCpuLoad", processCpuLoad).withDetail("arch", arch).withDetail("name",name).withDetail("systemLoadAverage", systemLoadAverage).build();
+            return Health.up().withDetail("processCpuLoad", processCpuLoad)
+                    .withDetail("arch", arch)
+                    .withDetail("name",name)
+                    .withDetail("systemLoadAverage", systemLoadAverage)
+                    .withDetail("condition", "if processCpuLoad > 0.8, it will return down")
+                    .build();
         } else {
-            return Health.down().withDetail("processCpuLoad", processCpuLoad).withDetail("arch",arch).build();
+            return Health.down()
+                    .withDetail("processCpuLoad", processCpuLoad)
+                    .withDetail("arch",arch)
+                    .withDetail("condition", "if processCpuLoad > 0.8, it will return down")
+                    .build();
         }
     }
 }
